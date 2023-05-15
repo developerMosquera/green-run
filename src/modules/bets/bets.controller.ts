@@ -20,6 +20,9 @@ import { GetDto, PutDto } from './dto';
 export class BetsController {
   constructor(private readonly betsService: BetsService) {}
 
+  /**
+   * Get Bets
+   */
   @Get()
   @ApiHeader({
     name: 'Role',
@@ -31,6 +34,11 @@ export class BetsController {
     return this.betsService.getBets(params);
   }
 
+  /**
+   * Update bets
+   * @param {number} id
+   * @param {PutDto} body
+   */
   @Put(':id')
   @ApiHeader({
     name: 'Role',

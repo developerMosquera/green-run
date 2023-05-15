@@ -28,6 +28,10 @@ export class TransactionsService {
     private readonly balancesRepository: Repository<Balances>,
   ) {}
 
+  /**
+   * Get users
+   * @returns {Promise<IGet>}
+   */
   async getUser(): Promise<IGet> {
     const reqUser = this.request.headers.user;
     return await this.usersRepository.findOne({
@@ -35,6 +39,11 @@ export class TransactionsService {
     });
   }
 
+  /**
+   * Create transactions
+   * @param {IPostTransactions} data
+   * @returns {Promise<IResultSaveTransactions>}
+   */
   async postUsersTransactions(
     data: IPostTransactions,
   ): Promise<IResultSaveTransactions> {
@@ -68,6 +77,11 @@ export class TransactionsService {
     }
   }
 
+  /**
+   * Get users transactions
+   * @param {IGetTransactions} params
+   * @returns {Promise<Transactions[]>}
+   */
   async getUsersTransactions(
     params: IGetTransactions,
   ): Promise<Transactions[]> {
@@ -92,6 +106,11 @@ export class TransactionsService {
     }
   }
 
+  /**
+   * Process transactions winning
+   * @param {Transactions[]} transactions
+   * @returns {Promise<number>}
+   */
   async processTransactionsWinning(
     transactions: Transactions[],
   ): Promise<number> {
@@ -118,6 +137,13 @@ export class TransactionsService {
     return totalWinning;
   }
 
+  /**
+   * Update balance for users
+   * @param {number} amount
+   * @param {number} user_id
+   * @param {string} category
+   * @returns {Promise<Balances>}
+   */
   async putUsersBalances(
     amount: number,
     user_id: number,

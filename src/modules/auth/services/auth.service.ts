@@ -14,9 +14,9 @@ export class AuthService {
   constructor(private firebaseService: FirebaseService) {}
 
   /**
-   *
-   * @param params
-   * @returns
+   * login
+   * @param {ILogin} params
+   * @returns {Promise<IResultAuth>}
    */
   async login(params: ILogin): Promise<IResultAuth> {
     try {

@@ -17,6 +17,11 @@ export class BetsService {
     private readonly transactionsRepository: Repository<Transactions>,
   ) {}
 
+  /**
+   * Get bets
+   * @param {IGet} params
+   * @returns {Promise<Bets[]>}
+   */
   async getBets(params: IGet): Promise<Bets[]> {
     return await this.betsRepository.find({
       relations: ['event'],
@@ -29,6 +34,12 @@ export class BetsService {
     });
   }
 
+  /**
+   * Update bets
+   * @param {number} id
+   * @param {string} status
+   * @returns {Promise<Bets>}
+   */
   async putBets(id: number, status: string): Promise<Bets> {
     try {
       const bets: Bets = await this.betsRepository.findOne({
@@ -54,6 +65,11 @@ export class BetsService {
     }
   }
 
+  /**
+   * Update bets users
+   * @param {id} id
+   * @param {string} status
+   */
   async putBetsUsers(id: number, status: string) {
     const usersBets: UsersBets[] = await this.usersBetsRepository.find({
       relations: ['Bet', 'User'],
@@ -81,6 +97,10 @@ export class BetsService {
     }
   }
 
+  /**
+   * Process transactions winning
+   * @param {UsersBets[]} usersBets
+   */
   async createTransactionsWinning(usersBets: UsersBets[]) {
     for (const item of usersBets) {
       const totalWinning = item.amount * item.Bet.odd + item.amount;

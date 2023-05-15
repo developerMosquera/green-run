@@ -30,12 +30,21 @@ export class UsersService {
     @Inject('REQUEST') private request: Request,
   ) {}
 
+  /**
+   * Get users
+   * @returns {Promise<any>}
+   */
   async getUsers(): Promise<any> {
     return await this.usersRepository.find({
       relations: ['cities', 'cities.country', 'transactions'],
     });
   }
 
+  /**
+   * Create users
+   * @param {IPost} data
+   * @returns {Promise<IResultSave>}
+   */
   async postUsers(data: IPost): Promise<IResultSave> {
     try {
       const userCredential: UserCredential = await this.registerUserFirebase(
@@ -62,11 +71,21 @@ export class UsersService {
     }
   }
 
+  /**
+   * Create balance initial for user
+   * @param user
+   */
   async createBalanceInitial(user): Promise<void> {
     const createBalance = this.balancesRepository.create({ user: user });
     await this.balancesRepository.save(createBalance);
   }
 
+  /**
+   * Register users in firebase
+   * @param {string} email
+   * @param {string} password
+   * @returns {Promise<UserCredential>}
+   */
   async registerUserFirebase(
     email: string,
     password: string,
@@ -80,6 +99,12 @@ export class UsersService {
     return userCredential;
   }
 
+  /**
+   * Update users
+   * @param {number} id
+   * @param {IPut} data
+   * @returns {Promise<IResultSave>}
+   */
   async putUsers(id: number, data: IPut): Promise<IResultSave> {
     try {
       const user = await this.usersRepository.findOne({ where: { id: id } });

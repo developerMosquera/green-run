@@ -39,6 +39,9 @@ export class UsersController {
     private readonly betsService: BetsService,
   ) {}
 
+  /**
+   * Get users
+   */
   @Get()
   @ApiHeader({
     name: 'Role',
@@ -50,11 +53,21 @@ export class UsersController {
     return this.usersService.getUsers();
   }
 
+  /**
+   * Create users
+   * @param {PostDto} body
+   * @returns {Promise<IResultSave>}
+   */
   @Post()
   async postUsers(@Body() body: PostDto): Promise<IResultSave> {
     return this.usersService.postUsers(body);
   }
 
+  /**
+   * Update users
+   * @param {number} id
+   * @param {PutDto} body
+   */
   @Put(':id')
   @ApiHeader({
     name: 'Role',
@@ -69,6 +82,11 @@ export class UsersController {
     return this.usersService.putUsers(id, body);
   }
 
+  /**
+   * Create transactions
+   * @param {PostTransactionsDto} body
+   * @returns {Promise<any>}
+   */
   @ApiHeader({
     name: 'Role',
     description: 'User role',
@@ -80,6 +98,10 @@ export class UsersController {
     return this.transactionsService.postUsersTransactions(body);
   }
 
+  /**
+   * Get transactions for users
+   * @param {GetTransactionsDto} params
+   */
   @ApiHeader({
     name: 'Role',
     description: 'User role',
@@ -91,6 +113,10 @@ export class UsersController {
     return this.transactionsService.getUsersTransactions(params);
   }
 
+  /**
+   * Get user balance
+   * @param {GetBalanceDto} params
+   */
   @ApiHeader({
     name: 'Role',
     description: 'User role',
@@ -102,6 +128,10 @@ export class UsersController {
     return this.balanceService.getUsersBalances(params);
   }
 
+  /**
+   * Create bets for users
+   * @param {PostBetsDto} body
+   */
   @Post('bets')
   @ApiHeader({
     name: 'Role',

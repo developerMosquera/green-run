@@ -8,6 +8,10 @@ import { LoginDto } from './dto/login.dto';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  /**
+   * Login
+   * @param {LoginDto} body
+   */
   @Post()
   public login(@Body() body: LoginDto) {
     return this.authService.login(body);

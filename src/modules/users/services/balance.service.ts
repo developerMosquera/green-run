@@ -26,6 +26,10 @@ export class BalanceService {
     private readonly transactionsService: TransactionsService,
   ) {}
 
+  /**
+   * Get users
+   * @returns Promise<IGet>
+   */
   async getUser(): Promise<IGet> {
     const reqUser = this.request.headers.user;
     return await this.usersRepository.findOne({
@@ -33,6 +37,11 @@ export class BalanceService {
     });
   }
 
+  /**
+   * Get balance
+   * @param {IGetBalance} params
+   * @returns {Promise<Balances>}
+   */
   async getUsersBalances(params: IGetBalance): Promise<Balances> {
     try {
       const reqRole = this.request.headers.role;

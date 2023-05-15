@@ -28,6 +28,10 @@ export class BetsService {
     private readonly transactionsService: TransactionsService,
   ) {}
 
+  /**
+   * Get users
+   * @returns Promise<IGet>
+   */
   async getUser(): Promise<IGet> {
     const reqUser = this.request.headers.user;
     return await this.usersRepository.findOne({
@@ -35,6 +39,11 @@ export class BetsService {
     });
   }
 
+  /**
+   * Create bets for users
+   * @param {IPostBets} data
+   * @returns {Promise<{ process: number; notProcess: Array<any> }>}
+   */
   async postBetsUsers(
     data: IPostBets,
   ): Promise<{ process: number; notProcess: Array<any> }> {
@@ -60,6 +69,13 @@ export class BetsService {
     }
   }
 
+  /**
+   * Save bets users
+   * @param {number} user_id
+   * @param {number} amount
+   * @param {number} bet_id
+   * @returns {Promise<boolean>}
+   */
   async saveBetsUsers(
     user_id: number,
     amount: number,
@@ -86,7 +102,12 @@ export class BetsService {
     return false;
   }
 
-  async getUsers(user_id): Promise<Users> {
+  /**
+   * Get users
+   * @param {number} user_id
+   * @returns {Promise<Users>}
+   */
+  async getUsers(user_id: number): Promise<Users> {
     return this.usersRepository.findOne({
       where: {
         id: user_id,
@@ -94,6 +115,11 @@ export class BetsService {
     });
   }
 
+  /**
+   * Get bets
+   * @param {number} bet_id
+   * @returns {Promise<Bets>}
+   */
   async getBets(bet_id): Promise<Bets> {
     return await this.betsRepository.findOne({
       where: {
@@ -103,6 +129,12 @@ export class BetsService {
     });
   }
 
+  /**
+   * Validate balance for users
+   * @param {number} user_id
+   * @param {number} amount
+   * @returns {Promise<boolean>}
+   */
   async validateBalanceUser(user_id: number, amount: number): Promise<boolean> {
     const balance: Balances = await this.balanceRepository.findOne({
       where: {

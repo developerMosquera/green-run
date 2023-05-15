@@ -8,8 +8,6 @@ export class FirebaseService {
   public app: FirebaseApp;
   public auth: Auth;
   public fireStore: Firestore;
-
-  // Collections
   public usersCollection: CollectionReference;
 
   constructor() {
