@@ -19,7 +19,7 @@ import { BetsModule } from './modules/bets/bets.module';
       database: 'green_run',
       autoLoadEntities: true,
       synchronize: true,
-      //dropSchema: true,
+      dropSchema: true,
     }),
     AuthModule,
     UsersModule,

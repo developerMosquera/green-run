@@ -28,6 +28,17 @@
 
 ## Installation
 
+## Info
+
+En el correo adjunto se encuentra el .sql para ejecutar la carga de la información principal para el funcionamiento de relaciones iniciales, es posible hacer login con amosquera@gmail.com y la contraseña 123456, también está abierta la posibilidad de crear un usuario en:
+
+- api#/users/UsersController_postUsers
+
+Para ingresar al soporte de swagger bastará con ingresar a por ejemplo:
+- localhost:3002/api
+
+En el app.module.ts está habilitada la opción "dropSchema: true", está opción crea en blanco la estructura de la base de datos, tener cuidado o comentarla
+
 ```bash
 $ npm install
 ```
@@ -57,10 +68,6 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
 ## Stay in touch
 
