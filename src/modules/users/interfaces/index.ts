@@ -1,0 +1,9 @@
+export { IPost } from './post.interface';
+export { IPut } from './put.interface';
+export { IResultSave } from './save.interface';
+export { IPostTransactions } from './postTransactions.interface';
+export { IGet } from './get.interface';
+export { IResultSaveTransactions } from './saveTransactions.interface';
+export { IGetTransactions } from './getTransactions.interface';
+export { IGetBalance } from './getBalance.interface';
+export { IPostBets } from './postBets.interface';
